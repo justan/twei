@@ -4,9 +4,6 @@
   "author": "justan (http://blog.whosemind.net)",
   "version": "0.1.0alpha",
   "repository": {
-    "url": ""
-  },
-  "repository": {
     "type": "git",
     "url": "https://github.com/justan/twei.git"
   },
