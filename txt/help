@@ -5,7 +5,7 @@
   
   options:
   
-    --accesstoken -a: 你的微博 access_token. 
+    --accesstoken -a: 重新设置 access_token. 
                       -a show  显示已有的 access_token
                       -a clear 将清除已有的 access_token
     --coordinates -c: 指定地理信息. 格式为: 经度,维度
@@ -15,4 +15,5 @@
     
   Example:
     
+    twei 雨一直下个不停
     twei -i ../example.png -c 114.169938,22.559385 "你好, 世界"

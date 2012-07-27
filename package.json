@@ -1,8 +1,8 @@
 {
   "name": "twei",
-  "description": "a sina weibo cli tool",
+  "description": "a weibo cli tool",
   "author": "justan (http://blog.whosemind.net)",
-  "version": "0.1.0alpha",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/justan/twei.git"
@@ -26,7 +26,8 @@
     "twei": "lib/twei_cli.js"
   },
   "keywords": [
-    "weibo"
+    "weibo",
+    "cli"
   ],
   "license": "BSD"
 }

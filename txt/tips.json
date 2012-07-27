@@ -1,5 +1,5 @@
 {
-  "input_access_token": "请输入你的微博 access_token. 或者直接按回车键获取一个(需要打开浏览器)"
+  "input_access_token": "请输入你的 access_token. 或者直接按回车键通过浏览器获取一个: "
   , "errortips": {
     "21327": "你的 access token 已过期. 请重新输入一个"
     , "21332": "你的 access token 无效. 请重新输入一个"
