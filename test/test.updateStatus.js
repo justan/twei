@@ -28,6 +28,7 @@ describe('Update status', function(){
       reply.text.should.eql(text);
       
       done();
+      destroy(reply.id);
     }, function(err){
       should.not.exist(err);
       done();
@@ -50,6 +51,7 @@ describe('Update status', function(){
       reply.geo.should.be.a('object');
       
       done();
+      destroy(reply.id);
     }, function(err){
       should.not.exist(err);
       done();
@@ -78,11 +80,23 @@ describe('Update status', function(){
       reply.should.have.property('original_pic');
       
       done();
+      
+      destroy(reply.id);
     }, function(err){
       should.not.exist(err);
       done();
     });
     
   });
-
+  
+  function destroy(id){
+    t2w.executeApi({
+        group: 'one'
+      , name: 'destroy'
+    }, {
+        access_token: accessToken
+      , id: id
+    });
+  
+  }
 });
