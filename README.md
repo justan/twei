@@ -53,6 +53,16 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
     
 ```
 
+# 示例
+
+  - `twei -e status.home | less` 查看最新微博
+  - `twei -e status.user "screen_name=sheepmaker&count=5"` 查看某人的微博
+  - `twei -e status.user count=5` 查看自己的微博
+  - `twei -e comment.comment "id=202110601896455629&comment=飘过去吧"` 评论微博
+  - `twei -e friends.friends screen_name=sheepmaker` 查看关注列表
+  - `twei -e remind.unread` 未读通知数量
+  
+  
 ## 测试
 
   `npm test`
@@ -61,13 +71,11 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
 
   由于新浪的 [api 限制][2], 目前的 access_token 只有数天的有效期. access_token 过期后需要重新授权并输入新的 access_token. 如果你感到恼火, 我表示歉意.
   
-## apistr:
+## Apistr:
 
-  twei 将[新浪微博的接口][4] 转接成 group.name 的形式. 使用 [twei api][5], 在命令行中即可直接操作微博的接口.
+  twei 将[新浪微博的接口][4] 转接成 group.name 的 apistr 形式. 使用 [twei api][5], 在命令行中即可直接操作微博的接口.
   
-  如使用 `twei -e status.user uid=1488292340` 来查看 uid 为 1488292340 的用户的微博.
-  
-  所有 querysting 请参考新浪微博的[接口][4]
+  querystring 是 apistr 的额外请求参数. 所有 querysting 请参考新浪微博的[接口][4]
 
 ```
   // twei apistr --> sina
@@ -147,6 +155,7 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   }
 
 ```
+
 
 [0]: http://nodejs.org/
 [1]: http://nodejs.org/#download
