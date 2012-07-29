@@ -5,7 +5,10 @@
     , "21332": "你的 access token 无效. 请重新输入一个"
   }
   , "need_message": "说点什么吧"
-  , "arg_need_access_token": "请在 %s 之后输入你的 access_token"
+  , "arg_need_sth": "请在 %s 之后输入 %s"
+  
+  , "status_type": "你想看的状态类型"
+  
   , "img_fail": "读取图片 %s 失败"
   , "update_fail": "微博更新失败"
 }
