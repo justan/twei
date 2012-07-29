@@ -9,7 +9,7 @@ module.exports = {
   
   , "status_type": "你想看的状态类型"
   , "no_item": "%s 里没有内容"
-  , "api_no_support": "不支持 %s "
+  , "api_no_support": "api %s 暂未支持"
   
   , "img_fail": "读取图片 %s 失败"
   , "update_fail": "微博更新失败"
