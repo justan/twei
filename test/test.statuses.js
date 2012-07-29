@@ -21,8 +21,8 @@ describe('fetch statuses', function(){
   statuses.forEach(function(name){
   
     it(name, function(done){
-      var text = '#test# test';
-      t2w.excuteApi({
+      
+      t2w.executeApi({
           group: g
         , name: name
       }, {

@@ -1,7 +1,10 @@
 
   nodejs 命令行微博工具
   
-  Usage: twei [options] message
+  Usage: 
+  
+    twei [options] message
+    twei -e api querystring
   
   options:
   
@@ -12,8 +15,23 @@
     --image       -i: 附带的图片. 可以是本地路径或者 http/https URL
     --help        -h: 显示本帮助信息
     --version     -v: 显示版本信息
+    --debug       -d: 显示版本信息
+    --execute     -e: 执行某条 api 指令
+    
+  api:
+    twei 提供的直接操作微博的借口. 格式为: apigroup.apiname
+    如: 
+    
+      status.friends    查看你关注的人的最新微博
+      one.repost        转发
+      comment.comment   评论某条微博
+      
+  querystring
+    querysting 表示前一条微博 api 的请求参数. 格式为: "count=5&page=2"
     
   Example:
     
     twei 雨一直下个不停
     twei -i ../example.png -c 114.169938,22.559385 "你好, 世界"
+    twei -e status.home count=10
+    
