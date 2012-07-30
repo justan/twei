@@ -9,9 +9,9 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
 
 ## 安装
 
-安装 [node.js][1] 后
-
-  `npm install -g twei`
+  1. 安装 [node.js][1]
+  2. 在命令行中: `npm install -g twei`
+  3. `twei --version`
   
 ## 使用
 
@@ -43,7 +43,7 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
       comment.comment   评论某条微博
       
   querystring
-    querysting 表示前一条微博 api 的请求参数. 格式为: "count=5&page=2"
+    querysting 是 apistr 的请求参数. 格式为: "count=5&page=2"
     
   Example:
     
@@ -53,7 +53,7 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
     
 ```
 
-# 示例
+## 示例
 
   - `twei -e status.home | less` 查看最新微博
   - `twei -e status.user "screen_name=sheepmaker&count=5"` 查看某人的微博
@@ -69,13 +69,13 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   
 ## access_token
 
-  由于新浪的 [api 限制][2], 目前的 access_token 只有数天的有效期. access_token 过期后需要重新授权并输入新的 access_token. 如果你感到恼火, 我表示歉意.
+  由于新浪的 [api 限制][2], 目前的 access_token 只有数天的有效期. Access_token 过期后需要输入你[重新授权][6]后的新 access_token. 
   
 ## Apistr:
 
   twei 将[新浪微博的接口][4] 转接成 group.name 的 apistr 形式. 使用 [twei api][5], 在命令行中即可直接操作微博的接口.
   
-  querystring 是 apistr 的额外请求参数. 所有 querysting 请参考新浪微博的[接口][4]
+  querystring 是 apistr 的请求参数. 所有 querysting 请参考新浪微博的[接口][4]
 
 ```
   // twei apistr --> sina
@@ -163,3 +163,4 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
 [3]: https://github.com/justan/twei/blob/master/lib/shower/README.md
 [4]: http://open.weibo.com/wiki/API%E6%96%87%E6%A1%A3_V2
 [5]: https://github.com/justan/twei/blob/master/lib/api/tina.js
+[6]: https://api.weibo.com/oauth2/authorize?client_id=3811884266&redirect_uri=http%3A%2F%2Fprojects.whosemind.net%2Ftwei%2Ftsina_access_token.html&response_type=token

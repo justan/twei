@@ -4,7 +4,7 @@
   Usage: 
   
     twei [options] message
-    twei -e api querystring
+    twei -e apistr querystring
   
   options:
   
@@ -18,7 +18,7 @@
     --debug       -d: 显示版本信息
     --execute     -e: 执行某条 api 指令
     
-  api:
+  apistr:
     twei 提供的直接操作微博的借口. 格式为: apigroup.apiname
     如: 
     
@@ -27,7 +27,7 @@
       comment.comment   评论某条微博
       
   querystring
-    querysting 表示前一条微博 api 的请求参数. 格式为: "count=5&page=2"
+    querysting 是 apistr 的请求参数. 格式为: "count=5&page=2"
     
   Example:
     
