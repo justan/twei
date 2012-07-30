@@ -31,7 +31,7 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
     --image       -i: 附带的图片. 可以是本地路径或者 http/https URL
     --help        -h: 显示本帮助信息
     --version     -v: 显示版本信息
-    --debug       -d: 显示版本信息
+    --debug       -d: 显示调试信息
     --execute     -e: 执行某条 api 指令
     
   apistr:
@@ -55,12 +55,12 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
 
 ## 示例
 
-  - `twei -e status.home | less` 查看最新微博
-  - `twei -e status.user "screen_name=sheepmaker&count=5"` 查看某人的微博
-  - `twei -e status.user count=5` 查看自己的微博
-  - `twei -e comment.comment "id=202110601896455629&comment=飘过去吧"` 评论微博
-  - `twei -e friends.friends screen_name=sheepmaker` 查看关注列表
-  - `twei -e remind.unread` 未读通知数量
+  - 查看最新微博: `twei -e status.home`
+  - 查看某人微博: `twei -e status.user "screen_name=sheepmaker&count=5"`
+  - 查看自己微博: `twei -e status.user count=5`
+  - 评论微博:     `twei -e comment.comment "id=202110601896455629&comment=飘过去吧"`
+  - 查看关注列表: `twei -e friends.friends screen_name=sheepmaker`
+  - 未读通知数量: `twei -e remind.unread`
   
   
 ## 测试
@@ -162,5 +162,5 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
 [2]: http://open.weibo.com/wiki/Oauth2#.E8.BF.87.E6.9C.9F.E6.97.B6.E9.97.B4
 [3]: https://github.com/justan/twei/blob/master/lib/shower/README.md
 [4]: http://open.weibo.com/wiki/API%E6%96%87%E6%A1%A3_V2
-[5]: https://github.com/justan/twei/blob/master/lib/api/tina.js
+[5]: https://github.com/justan/twei/blob/master/lib/api/tsina.js
 [6]: https://api.weibo.com/oauth2/authorize?client_id=3811884266&redirect_uri=http%3A%2F%2Fprojects.whosemind.net%2Ftwei%2Ftsina_access_token.html&response_type=token

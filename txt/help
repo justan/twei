@@ -15,7 +15,7 @@
     --image       -i: 附带的图片. 可以是本地路径或者 http/https URL
     --help        -h: 显示本帮助信息
     --version     -v: 显示版本信息
-    --debug       -d: 显示版本信息
+    --debug       -d: 显示调试信息
     --execute     -e: 执行某条 api 指令
     
   apistr:
