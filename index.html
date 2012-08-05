@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Twei by justan</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Twei</h1>
+        <h2>微博命令行工具</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/justan/twei/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/justan/twei/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/justan/twei" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>twei</h1>
+
+<p>twei 是用 <a href="http://nodejs.org/">node.js</a> 编写的微博命令行工具. 目前支持新浪微博的查看与发送.</p>
+
+<h2>环境</h2>
+
+<p>twei 适用于所有可运行 node.js 的环境, 包括 <em>windows, linux, mac os(未测试), cygwin</em> 等.</p>
+
+<h2>安装</h2>
+
+<ol>
+<li>安装 <a href="http://nodejs.org/#download">node.js</a>
+</li>
+<li>在命令行中: <code>npm install -g twei</code>
+</li>
+<li><code>twei --version</code></li>
+</ol><h2>使用</h2>
+
+<pre><code>
+  nodejs 命令行微博工具
+
+  Usage: twei [command]
+
+  Command:
+    默认的命令包括: 
+    authorize, execute, help, 
+    comment, follow, followers, unfollow, update, repost,
+    status, user, hot
+
+  Example:
+    twei update 雨一直下个不停
+    twei update "你好, 世界" -i ../example.png -c 114.169938,22.559385
+
+</code></pre>
+
+<h2>测试</h2>
+
+<p><code>npm test</code></p>
+
+<h2>access_token</h2>
+
+<p>由于新浪的 <a href="http://open.weibo.com/wiki/Oauth2#.E8.BF.87.E6.9C.9F.E6.97.B6.E9.97.B4">api 限制</a>, 目前的 access_token 只有数天的有效期. Access_token 过期后需要输入你<a href="https://api.weibo.com/oauth2/authorize?client_id=3811884266&amp;redirect_uri=http%3A%2F%2Fprojects.whosemind.net%2Ftwei%2Ftsina_access_token.html&amp;response_type=token">重新授权</a>后的新 access_token. </p>
+
+<h2>示例</h2>
+
+<ul>
+<li>
+<p>更新微博</p>
+
+<ul>
+<li>发微博: twei update 雨一直下个不停</li>
+<li>发带网络图片的微博: twei update 雨一直下个不停 -i http://example/example.png</li>
+<li>发带本地图片的微博: twei update 雨一直下个不停 -i ./example.png</li>
+</ul>
+</li>
+<li>
+<p>timeline</p>
+
+<ul>
+<li>查看自己的微博: twei timeline</li>
+<li>查看某人的微博: twei timeline sheepmaker</li>
+<li>查看收到的微博: twei timeline.friends</li>
+<li>查看@你的微博: twei timeline.mentions</li>
+</ul>
+</li>
+<li><p>查看某人信息: twei user sheepmaker</p></li>
+<li><p>查看某人的粉丝: twei followers sheepmaker</p></li>
+<li><p>查看 follow 那些人: twei friends sheepmaker</p></li>
+<li><p>follow 某人: twei follow sheepmaker</p></li>
+<li>
+<p>评论</p>
+
+<ul>
+<li>查看某条微博的评论: twei comments {{id}}</li>
+<li>评论微博: twei comment {{id}} {{comment}}</li>
+<li>删除评论: twei comment.remove {{id}}</li>
+<li>回复评论: twei comment.reply {{id}} {{cid}} {{comment}}</li>
+</ul>
+</li>
+</ul><h2>execute</h2>
+
+<p>相比上面的示例, twei 提供了功能更为完整的微博命令行接口 execute. 使用 execute 命令可以执行较为完整的微博 api 接口.</p>
+
+<p>Usage: <code>twei execute {{apistr}} {{querystring}}</code></p>
+
+<h3>apistr &amp; querystring:</h3>
+
+<p>twei 将<a href="http://open.weibo.com/wiki/API%E6%96%87%E6%A1%A3_V2">新浪微博的接口</a> 转接成 group.name 的 apistr 形式. 使用 <a href="https://github.com/justan/twei/blob/master/lib/api/tsina.js">twei api</a>, 在命令行中即可直接操作微博的接口.</p>
+
+<p>querystring 是 apistr 的请求参数. querystring 可以是普通的请求字符串格式(uid=1488292340), 如果该条 api 定义了expect, querysting 可以省去请求参数头部分(前例中的 "uid=" 部分). 完整的 querysting 请参考新浪微博的<a href="http://open.weibo.com/wiki/API%E6%96%87%E6%A1%A3_V2">接口</a></p>
+
+<p>Usage: <code>twei timeline.home count=2 page=2</code> or <code>twei timeline.home "count=2&amp;page=2"</code>, 
+         <code>twei execute statuses.user sheepmaker count=5 page=2 feature=1</code> </p>
+
+<h3>--force(TODO)</h3>
+
+<p><a href="https://github.com/justan/twei/blob/master/lib/api/tsina.js">twei api</a> 并未列出所有的微博 api, 如果你需要操作 twei 未包含的 api, 可以使用 <code>--force</code> 参数.</p>
+
+<p>Usage: <code>twei execute users/show screen_name=sheepmaker --force</code></p>
+
+<h2>alias &amp; shower</h2>
+
+<p>alias 和 shower 是 twei 提供的自定义命令和样式功能. </p>
+
+<ul>
+<li>
+<a href="https://github.com/justan/twei/blob/master/lib/user_alias/alias.example.js">command alias</a> 可以将常用命令改写成较短的命令. </li>
+<li>默认的 twei 只提供了有限类型的数据. 通过 shower 则可以自定义内容的显示样式. 自定义的 shower 可以通过 <code>--shower</code> 指定使用.
+Example: <code>twei timeline --shower base</code>
+</li>
+</ul>
+      </section>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-12642431-5");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
