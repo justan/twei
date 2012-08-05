@@ -90,10 +90,7 @@ describe('Update status', function(){
   });
   
   function destroy(id){
-    t2w.executeApi({
-        group: 'one'
-      , name: 'destroy'
-    }, {
+    t2w.executeApi('status.remove', {
         access_token: accessToken
       , id: id
     });
