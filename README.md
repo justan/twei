@@ -78,6 +78,9 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   twei 将[新浪微博的接口][4] 转接成 group.name 的 apistr 形式. 使用 [twei api][5], 在命令行中即可直接操作微博的接口.
   
   querystring 是 apistr 的请求参数. querystring 可以是普通的请求字符串格式(uid=1488292340), 如果该条 api 定义了expect, querysting 可以省去请求参数头部分(前例中的 "uid=" 部分). 完整的 querysting 请参考新浪微博的[接口][4]
+  
+  Usage: `twei timeline.home count=2 page=2` or `twei timeline.home "count=2&page=2"`, 
+         `twei execute statuses.user sheepmaker count=5 page=2 feature=1` 
 
 ### --force(TODO)
 
