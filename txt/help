@@ -1,37 +1,14 @@
 
-  nodejs 命令行微博工具
+nodejs 命令行微博工具
   
-  Usage: 
+Usage: twei [command]
   
-    twei [options] message
-    twei -e api querystring
-  
-  options:
-  
-    --accesstoken -a: 重新设置 access_token. 
-                      -a show  显示已有的 access_token
-                      -a clear 将清除已有的 access_token
-    --coordinates -c: 指定地理信息. 格式为: 经度,维度
-    --image       -i: 附带的图片. 可以是本地路径或者 http/https URL
-    --help        -h: 显示本帮助信息
-    --version     -v: 显示版本信息
-    --debug       -d: 显示版本信息
-    --execute     -e: 执行某条 api 指令
-    
-  api:
-    twei 提供的直接操作微博的借口. 格式为: apigroup.apiname
-    如: 
-    
-      status.friends    查看你关注的人的最新微博
-      one.repost        转发
-      comment.comment   评论某条微博
-      
-  querystring
-    querysting 表示前一条微博 api 的请求参数. 格式为: "count=5&page=2"
-    
-  Example:
-    
-    twei 雨一直下个不停
-    twei -i ../example.png -c 114.169938,22.559385 "你好, 世界"
-    twei -e status.home count=10
-    
+Command:
+  默认的命令包括: 
+  authorize, execute, help, 
+  comment, follow, followers, unfollow, update, repost,
+  status, user, hot
+
+Example:
+  twei update 雨一直下个不停
+  twei update "你好, 世界" -i ../example.png -c 114.169938,22.559385

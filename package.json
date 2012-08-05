@@ -2,7 +2,7 @@
   "name": "twei",
   "description": "a weibo cli tool",
   "author": "justan (http://blog.whosemind.net)",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/justan/twei.git"
@@ -29,5 +29,5 @@
     "weibo",
     "cli"
   ],
-  "license": "BSD"
+  "license": "MIT"
 }
