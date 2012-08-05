@@ -17,52 +17,22 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
 
 ```
 
-  Usage: 
-  
-    twei [options] message
-    twei -e apistr querystring
-  
-  options:
-  
-    --accesstoken -a: 重新设置 access_token. 
-                      -a show  显示已有的 access_token
-                      -a clear 将清除已有的 access_token
-    --coordinates -c: 指定地理信息. 格式为: 经度,维度
-    --image       -i: 附带的图片. 可以是本地路径或者 http/https URL
-    --help        -h: 显示本帮助信息
-    --version     -v: 显示版本信息
-    --debug       -d: 显示调试信息
-    --execute     -e: 执行某条 api 指令
+  nodejs 命令行微博工具
     
-  apistr:
-    twei 提供的直接操作微博的接口. 格式为: apigroup.apiname
-    如: 
+  Usage: twei [command]
     
-      status.friends    查看你关注的人的最新微博
-      one.repost        转发
-      comment.comment   评论某条微博
-      
-  querystring
-    querysting 是 apistr 的请求参数. 格式为: "count=5&page=2"
-    
+  Command:
+    默认的命令包括: 
+    authorize, execute, help, 
+    comment, follow, followers, unfollow, update, repost,
+    status, user, hot
+
   Example:
-    
-    twei 雨一直下个不停
-    twei -i ../example.png -c 114.169938,22.559385 "你好, 世界"
-    twei -e status.home count=10
-    
+    twei update 雨一直下个不停
+    twei update "你好, 世界" -i ../example.png -c 114.169938,22.559385
+
 ```
 
-## 示例
-
-  - 查看最新微博: `twei -e status.home`
-  - 查看某人微博: `twei -e status.user "screen_name=sheepmaker&count=5"`
-  - 查看自己微博: `twei -e status.user count=5`
-  - 评论微博:     `twei -e comment.comment "id=202110601896455629&comment=飘过去吧"`
-  - 查看关注列表: `twei -e friends.friends screen_name=sheepmaker`
-  - 未读通知数量: `twei -e remind.unread`
-  
-  
 ## 测试
 
   `npm test`
@@ -70,97 +40,66 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
 ## access_token
 
   由于新浪的 [api 限制][2], 目前的 access_token 只有数天的有效期. Access_token 过期后需要输入你[重新授权][6]后的新 access_token. 
+
+## 示例
+
+  - 更新微博
   
-## Apistr:
+    - 发微博: twei update 雨一直下个不停
+    - 发带网络图片的微博: twei update 雨一直下个不停 -i http://example/example.png
+    - 发带本地图片的微博: twei update 雨一直下个不停 -i ./example.png
+    
+  - timeline
+  
+    - 查看自己的微博: twei timeline
+    - 查看某人的微博: twei timeline sheepmaker
+    - 查看收到的微博: twei timeline.friends
+    - 查看@你的微博: twei timeline.mentions
+    
+  - 查看某人信息: twei user sheepmaker
+  - 查看某人的粉丝: twei followers sheepmaker
+  - 查看 follow 那些人: twei friends sheepmaker
+  - follow 某人: twei follow sheepmaker
+  - 评论
+  
+    - 查看某条微博的评论: twei comments {{id}}
+    - 评论微博: twei comment {{id}} {{comment}}
+    - 删除评论: twei comment.remove {{id}}
+    - 回复评论: twei comment.reply {{id}} {{cid}} {{comment}}
+    
+## execute
+
+  相比上面的示例, twei 提供了功能更为完整的微博命令行接口 execute. 使用 execute 命令可以执行较为完整的微博 api 接口.
+  
+  Usage: `twei execute {{apistr}} {{querystring}}`
+  
+### apistr & querystring:
 
   twei 将[新浪微博的接口][4] 转接成 group.name 的 apistr 形式. 使用 [twei api][5], 在命令行中即可直接操作微博的接口.
   
-  querystring 是 apistr 的请求参数. 所有 querysting 请参考新浪微博的[接口][4]
+  querystring 是 apistr 的请求参数. querystring 可以是普通的请求字符串格式(uid=1488292340), 如果该条 api 定义了expect, querysting 可以省去请求参数头部分(前例中的 "uid=" 部分). 完整的 querysting 请参考新浪微博的[接口][4]
 
-```
-  // twei apistr --> sina
-  {
+### --force(TODO)
 
-    status: {
-        home: 'statuses/home_timeline'
-      , "public": 'statuses/public_timeline'
-      , friends: 'statuses/friends_timeline'
-      
-      , user: 'statuses/user_timeline'
-      , bilateral: 'statuses/bilateral_timeline'
-      , mentions: 'statuses/mentions'
-      , repost_by_me: 'statuses/repost_by_me'
-      
-    }
-    
-    , hot: {
-        repost_daily: 'statuses/hot/repost_daily'
-      , comment_daily: 'statuses/hot/comments_daily'
-      , repost_weekly: 'statuses/hot/repost_weekly'
-      , comment_weekly: 'statuses/hot/comments_weekly'
-    }
-    
-    , one: {
-        show: 'statuses/show'
-      , repost: {
-          path: 'statuses/repost'
-        , method: 'post'
-      }
-      , update: {
-          path: 'statuses/update'
-        , method: 'post'
-      }
-      , destroy: {
-          path: 'statuses/destroy'
-        , method: 'post'
-      }
-    }
-    , comment: {
-        comment: {
-          path: 'comments/create'
-        , method: 'post'
-      }
-      , reply: {
-          path: 'comments/create'
-        , method: 'post'
-      }
-      , destroy: {
-          path: 'comments/destroy'
-        , method: 'post'
-      }
-    }
-    
-    , comments: {
-        to_me: 'comments/to_me'
-      , by_me: 'comments/by_me'
-      , mentions: 'comments/mentions'
-      , show: 'comments/show'
-    }
-    
-    //关系
-    , friends: {
-    
-        friends: 'friendships/friends'
-      , in_common: 'friendships/friends/in_common'
-      , bilateral: 'friendships/friends/bilateral'
-      
-      , followers: 'friendships/followers'
-      , active: 'friendships/followers/active'
-    
-    }
-    //提醒
-    , remind: {
-        unread_count: 'remind/unread_count'
-    }
-  }
+  [twei api][5] 并未列出所有的微博 api, 如果你需要操作 twei 未包含的 api, 可以使用 `--force` 参数.
+  
+  Usage: `twei execute users/show screen_name=sheepmaker --force`
+  
+## alias & shower
 
-```
+  alias 和 shower 是 twei 提供的自定义命令和样式功能. 
+  
+  - [command alias][7] 可以将常用命令改写成较短的命令. 
+  - 默认的 twei 只提供了有限类型的数据. 通过 shower 则可以自定义内容的显示样式. 自定义的 shower 可以通过 `--shower` 指定使用.
+    Example: `twei timeline --shower base`
 
+
+    
 
 [0]: http://nodejs.org/
 [1]: http://nodejs.org/#download
 [2]: http://open.weibo.com/wiki/Oauth2#.E8.BF.87.E6.9C.9F.E6.97.B6.E9.97.B4
-[3]: https://github.com/justan/twei/blob/master/lib/shower/README.md
 [4]: http://open.weibo.com/wiki/API%E6%96%87%E6%A1%A3_V2
 [5]: https://github.com/justan/twei/blob/master/lib/api/tsina.js
 [6]: https://api.weibo.com/oauth2/authorize?client_id=3811884266&redirect_uri=http%3A%2F%2Fprojects.whosemind.net%2Ftwei%2Ftsina_access_token.html&response_type=token
+[7]: https://github.com/justan/twei/blob/master/lib/user_alias/alias.example.js
