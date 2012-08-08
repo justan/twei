@@ -22,10 +22,10 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   Usage: twei [command]
     
   Command:
-    默认的命令包括: 
+    支持的命令包括: 
     authorize, execute, help, 
     comment, follow, followers, unfollow, update, repost,
-    status, user, hot
+    status, user, hot, remind
 
   Example:
     twei update 雨一直下个不停
@@ -51,9 +51,9 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
     
   - timeline
   
-    - 查看自己的微博: twei timeline
-    - 查看某人的微博: twei timeline sheepmaker
-    - 查看收到的微博: twei timeline.friends
+    - 查看收到的微博: twei timeline
+    - 查看自己的微博: twei timeline.user
+    - 查看某人的微博: twei timeline.user sheepmaker
     - 查看@你的微博: twei timeline.mentions
     
   - 查看某人信息: twei user sheepmaker
