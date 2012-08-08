@@ -4,10 +4,8 @@ nodejs 命令行微博工具
 Usage: twei [command]
   
 Command:
-  默认的命令包括: 
-  authorize, execute, help, 
-  comment, follow, followers, unfollow, update, repost,
-  status, user, hot
+  支持的命令包括: 
+  %s
 
 Example:
   twei update 雨一直下个不停
