@@ -2,7 +2,7 @@
   "name": "twei",
   "description": "a weibo cli tool",
   "author": "justan (http://blog.whosemind.net)",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/justan/twei.git"
@@ -15,8 +15,7 @@
     "node": ">=0.6.7"
   },
   "dependencies": {
-    "request": ">=2.0",
-    "promised-io": "~ 0.3.0"
+    "request": ">=2.0"
   },
   "devDependencies": {
     "mocha": ">=1.0",

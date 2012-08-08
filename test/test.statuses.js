@@ -25,7 +25,7 @@ describe('fetch statuses', function(){
       t2w.executeApi('statuses.' + name, {
           access_token: accessToken
         , count: 5
-      }).then(function(reply){
+      }).on('success', function(reply){
         reply.should.be.a('object');
         reply.should.not.have.property('error');
         
@@ -38,7 +38,7 @@ describe('fetch statuses', function(){
         }
         
         done();
-      }, function(err){
+      }).on('error', function(err){
         should.not.exist(err);
         done();
       });

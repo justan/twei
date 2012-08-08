@@ -42,30 +42,31 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   由于新浪的 [api 限制][2], 目前的 access_token 只有数天的有效期. Access_token 过期后需要输入你[重新授权][6]后的新 access_token. 
 
 ## 示例
-
+  
+  - 查看提醒: `twei remind`
   - 更新微博
   
-    - 发微博: twei update 雨一直下个不停
-    - 发带网络图片的微博: twei update 雨一直下个不停 -i http://example/example.png
-    - 发带本地图片的微博: twei update 雨一直下个不停 -i ./example.png
+    - 发微博: `twei update 雨一直下个不停`
+    - 发带网络图片的微博: `twei update 雨一直下个不停 -i http://example/example.png`
+    - 发带本地图片的微博: `twei update 雨一直下个不停 -i ./example.png`
     
   - timeline
   
-    - 查看收到的微博: twei timeline
-    - 查看自己的微博: twei timeline.user
-    - 查看某人的微博: twei timeline.user sheepmaker
-    - 查看@你的微博: twei timeline.mentions
+    - 查看收到的微博: `twei timeline`
+    - 查看自己的微博: `twei timeline.user`
+    - 查看某人的微博: `twei timeline.user sheepmaker`
+    - 查看@你的微博: `twei timeline.mentions`
     
-  - 查看某人信息: twei user sheepmaker
-  - 查看某人的粉丝: twei followers sheepmaker
-  - 查看 follow 那些人: twei friends sheepmaker
-  - follow 某人: twei follow sheepmaker
+  - 查看某人信息: `twei user sheepmaker`
+  - 查看某人的粉丝: `twei followers sheepmaker`
+  - 查看 follow 那些人: `twei friends sheepmaker`
+  - follow 某人: `twei follow sheepmaker`
   - 评论
   
-    - 查看某条微博的评论: twei comments {{id}}
-    - 评论微博: twei comment {{id}} {{comment}}
-    - 删除评论: twei comment.remove {{id}}
-    - 回复评论: twei comment.reply {{id}} {{cid}} {{comment}}
+    - 查看某条微博的评论: `twei comments {{id}}`
+    - 评论微博: `twei comment {{id}} {{comment}}`
+    - 删除评论: `twei comment.remove {{id}}`
+    - 回复评论: `twei comment.reply {{id}} {{cid}} {{comment}}`
     
 ## execute
 
@@ -82,12 +83,7 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   Usage: `twei timeline.home count=2 page=2` or `twei timeline.home "count=2&page=2"`, 
          `twei execute statuses.user sheepmaker count=5 page=2 feature=1` 
 
-### --force(TODO)
-
-  [twei api][5] 并未列出所有的微博 api, 如果你需要操作 twei 未包含的 api, 可以使用 `--force` 参数.
-  
-  Usage: `twei execute users/show screen_name=sheepmaker --force`
-  
+         
 ## alias & shower
 
   alias 和 shower 是 twei 提供的自定义命令和样式功能. 

@@ -21,7 +21,7 @@ describe('Update status', function(){
     t2w.updateWeibo({
         accessToken: accessToken
       , message: text
-    }).then(function(reply){
+    }).on('success', function(reply){
       reply.should.be.a('object');
       reply.should.not.have.property('error');
       reply.should.have.property('text');
@@ -29,7 +29,7 @@ describe('Update status', function(){
       
       done();
       destroy(reply.id);
-    }, function(err){
+    }).on('error', function(err){
       should.not.exist(err);
       done();
     });
@@ -41,7 +41,7 @@ describe('Update status', function(){
         accessToken: accessToken
       , message: text
       , coordinates: [114.169938, 22.559385]
-    }).then(function(reply){
+    }).on('success', function(reply){
       reply.should.be.a('object');
       reply.should.not.have.property('error');
       reply.should.have.property('text');
@@ -52,7 +52,7 @@ describe('Update status', function(){
       
       done();
       destroy(reply.id);
-    }, function(err){
+    }).on('error', function(err){
       should.not.exist(err);
       done();
     });
@@ -68,7 +68,7 @@ describe('Update status', function(){
       , message: text
       , coordinates: [114.169938, 22.559385]
       , image: 'http://nodejs.org/images/logo.png'
-    }).then(function(reply){
+    }).on('success', function(reply){
       reply.should.be.a('object');
       reply.should.not.have.property('error');
       reply.should.have.property('text');
@@ -82,7 +82,7 @@ describe('Update status', function(){
       done();
       
       destroy(reply.id);
-    }, function(err){
+    }).on('error', function(err){
       should.not.exist(err);
       done();
     });
