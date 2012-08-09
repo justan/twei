@@ -84,7 +84,7 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
          `twei execute statuses.user sheepmaker count=5 page=2 feature=1` 
 
          
-## alias & shower
+## 自定义
 
   alias 和 shower 是 twei 提供的自定义命令和样式功能. 
   
