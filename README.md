@@ -28,6 +28,8 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
     status, user, hot, remind
 
   Example:
+    twei remind
+    twei timeline
     twei update 雨一直下个不停
     twei update "你好, 世界" -i ../example.png -c 114.169938,22.559385
 
@@ -63,6 +65,9 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   - follow 某人: `twei follow sheepmaker`
   - 评论
   
+    - 查看@你的评论: `twei comments.mentions`
+    - 查看你发出评论: `twei comments.by_me`
+    - 查看给你的评论: `twei comments.to_me`
     - 查看某条微博的评论: `twei comments {{id}}`
     - 评论微博: `twei comment {{id}} {{comment}}`
     - 删除评论: `twei comment.remove {{id}}`
@@ -92,7 +97,10 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   - 默认的 twei 只提供了有限类型的数据. 通过 shower 则可以自定义内容的显示样式. 自定义的 shower 可以通过 `--shower` 指定使用.
     Example: `twei timeline --shower base`
 
+## 联系
 
+  如果你对 twei 有任何的建议, 可以使用 [issue][8], 或者直接联系 [@sheepmaker][9]
+  
     
 
 [0]: http://nodejs.org/
@@ -102,3 +110,5 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
 [5]: https://github.com/justan/twei/blob/master/lib/api/tsina.js
 [6]: https://api.weibo.com/oauth2/authorize?client_id=3811884266&redirect_uri=http%3A%2F%2Fprojects.whosemind.net%2Ftwei%2Ftsina_access_token.html&response_type=token
 [7]: https://github.com/justan/twei/blob/master/lib/user_alias/alias.example.js
+[8]: https://github.com/justan/twei/issues/new
+[9]: http://weibo.com/urmaker
