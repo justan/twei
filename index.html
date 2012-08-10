@@ -52,12 +52,14 @@
   Usage: twei [command]
 
   Command:
-    默认的命令包括: 
+    支持的命令包括: 
     authorize, execute, help, 
     comment, follow, followers, unfollow, update, repost,
-    status, user, hot
+    status, user, hot, remind
 
   Example:
+    twei remind
+    twei timeline
     twei update 雨一直下个不停
     twei update "你好, 世界" -i ../example.png -c 114.169938,22.559385
 
@@ -74,37 +76,56 @@
 <h2>示例</h2>
 
 <ul>
+<li>查看提醒: <code>twei remind</code>
+</li>
 <li>
 <p>更新微博</p>
 
 <ul>
-<li>发微博: twei update 雨一直下个不停</li>
-<li>发带网络图片的微博: twei update 雨一直下个不停 -i http://example/example.png</li>
-<li>发带本地图片的微博: twei update 雨一直下个不停 -i ./example.png</li>
+<li>发微博: <code>twei update 雨一直下个不停</code>
+</li>
+<li>发带网络图片的微博: <code>twei update 雨一直下个不停 -i http://example/example.png</code>
+</li>
+<li>发带本地图片的微博: <code>twei update 雨一直下个不停 -i ./example.png</code>
+</li>
 </ul>
 </li>
 <li>
 <p>timeline</p>
 
 <ul>
-<li>查看自己的微博: twei timeline</li>
-<li>查看某人的微博: twei timeline sheepmaker</li>
-<li>查看收到的微博: twei timeline.friends</li>
-<li>查看@你的微博: twei timeline.mentions</li>
+<li>查看收到的微博: <code>twei timeline</code>
+</li>
+<li>查看自己的微博: <code>twei timeline.user</code>
+</li>
+<li>查看某人的微博: <code>twei timeline.user sheepmaker</code>
+</li>
+<li>查看@你的微博: <code>twei timeline.mentions</code>
+</li>
 </ul>
 </li>
-<li><p>查看某人信息: twei user sheepmaker</p></li>
-<li><p>查看某人的粉丝: twei followers sheepmaker</p></li>
-<li><p>查看 follow 那些人: twei friends sheepmaker</p></li>
-<li><p>follow 某人: twei follow sheepmaker</p></li>
+<li><p>查看某人信息: <code>twei user sheepmaker</code></p></li>
+<li><p>查看某人的粉丝: <code>twei followers sheepmaker</code></p></li>
+<li><p>查看 follow 那些人: <code>twei friends sheepmaker</code></p></li>
+<li><p>follow 某人: <code>twei follow sheepmaker</code></p></li>
 <li>
 <p>评论</p>
 
 <ul>
-<li>查看某条微博的评论: twei comments {{id}}</li>
-<li>评论微博: twei comment {{id}} {{comment}}</li>
-<li>删除评论: twei comment.remove {{id}}</li>
-<li>回复评论: twei comment.reply {{id}} {{cid}} {{comment}}</li>
+<li>查看@你的评论: <code>twei comments.mentions</code>
+</li>
+<li>查看你发出评论: <code>twei comments.by_me</code>
+</li>
+<li>查看给你的评论: <code>twei comments.to_me</code>
+</li>
+<li>查看某条微博的评论: <code>twei comments {{id}}</code>
+</li>
+<li>评论微博: <code>twei comment {{id}} {{comment}}</code>
+</li>
+<li>删除评论: <code>twei comment.remove {{id}}</code>
+</li>
+<li>回复评论: <code>twei comment.reply {{id}} {{cid}} {{comment}}</code>
+</li>
 </ul>
 </li>
 </ul><h2>execute</h2>
@@ -122,13 +143,7 @@
 <p>Usage: <code>twei timeline.home count=2 page=2</code> or <code>twei timeline.home "count=2&amp;page=2"</code>, 
          <code>twei execute statuses.user sheepmaker count=5 page=2 feature=1</code> </p>
 
-<h3>--force(TODO)</h3>
-
-<p><a href="https://github.com/justan/twei/blob/master/lib/api/tsina.js">twei api</a> 并未列出所有的微博 api, 如果你需要操作 twei 未包含的 api, 可以使用 <code>--force</code> 参数.</p>
-
-<p>Usage: <code>twei execute users/show screen_name=sheepmaker --force</code></p>
-
-<h2>alias &amp; shower</h2>
+<h2>自定义</h2>
 
 <p>alias 和 shower 是 twei 提供的自定义命令和样式功能. </p>
 
@@ -138,7 +153,9 @@
 <li>默认的 twei 只提供了有限类型的数据. 通过 shower 则可以自定义内容的显示样式. 自定义的 shower 可以通过 <code>--shower</code> 指定使用.
 Example: <code>twei timeline --shower base</code>
 </li>
-</ul>
+</ul><h2>联系</h2>
+
+<p>如果你对 twei 有任何的建议, 可以使用 <a href="https://github.com/justan/twei/issues/new">issue</a>, 或者直接联系 <a href="http://weibo.com/urmaker">@sheepmaker</a></p>
       </section>
     </div>
 
