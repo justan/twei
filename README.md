@@ -72,6 +72,13 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
     - 评论微博: `twei comment {{id}} {{comment}}`
     - 删除评论: `twei comment.remove {{id}}`
     - 回复评论: `twei comment.reply {{id}} {{cid}} {{comment}}`
+  
+  - 帮助
+    
+    - 查看 `execute` 的帮助内容: `twei help execute` or `twei execute -h`
+    - 查看 `remind` 的新浪 api 文档: `twei help remind`
+  
+  
     
 ## execute
 

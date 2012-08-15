@@ -1,0 +1,8 @@
+excute: 执行某条微博 api 请求. 可以编写 alias 来简化复杂的 execute 命令
+
+Usage: `twei excute [apistr] [querystring]`
+
+Example: 
+  - `twei timeline.home count=2 page=2`
+  - `twei timeline.home "count=2&page=2"`
+  - `twei execute statuses.user sheepmaker count=5 page=2 feature=1`
