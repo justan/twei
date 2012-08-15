@@ -9,10 +9,14 @@ module.exports = {
   
   , "status_type": "你想看的状态类型"
   , "no_item": "%s 里没有内容"
-  , "api_no_shower": "api %s 暂未支持"
+  , "api_no_shower": "api %s 的显示暂未做好, 将就这看下原始数据吧:-)"
   
   , "img_fail": "读取图片 %s 失败"
   , "update_fail": "微博更新失败"
   
-  , "no help": "%s? twei 不太清楚"
+  , "need_help": "暂时没有关于 %s 的文档. 或许你可以帮忙写个. ╮(╯_╰)╭"
+  , "twei_dont_konw": "%s? twei 不太清楚"
+  , "api_not_support": "api %s 暂未支持."
+  
+  , "loading_sina_api_item": "正在打开 %s 在新浪 api 中的页面.."
 }
