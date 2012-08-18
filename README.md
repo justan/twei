@@ -44,6 +44,14 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   由于新浪的 [api 限制][2], 目前的 access_token 只有数天的有效期. Access_token 过期后需要输入你[重新授权][6]后的新 access_token. 
 
 ## 示例
+
+```
+  符号说明: 
+    微博用户名: {{username}}
+    微博 id: {{sid}}
+    微博评论 id: {{cid}}
+    评论内容: {{comment}}
+``` 
   
   - 查看提醒: `twei remind`
   - 更新微博
@@ -51,33 +59,41 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
     - 发微博: `twei update 雨一直下个不停`
     - 发带网络图片的微博: `twei update 雨一直下个不停 -i http://example/example.png`
     - 发带本地图片的微博: `twei update 雨一直下个不停 -i ./example.png`
+    - 转发微博: `twei repost {{sid}}` or `twei rt {{sid}}`
     
   - timeline
   
     - 查看收到的微博: `twei timeline`
     - 查看自己的微博: `twei timeline.user`
-    - 查看某人的微博: `twei timeline.user sheepmaker`
+    - 查看指定用户的微博: `twei timeline.user {{username}}`
     - 查看@你的微博: `twei timeline.mentions`
     
-  - 查看某人信息: `twei user sheepmaker`
-  - 查看某人的粉丝: `twei followers sheepmaker`
-  - 查看 follow 那些人: `twei friends sheepmaker`
-  - follow 某人: `twei follow sheepmaker`
+  - 查看用户信息: `twei user {{username}}`
+  - 查看指定用户的粉丝: `twei followers {{username}}`
+  - 查看 follow 哪些人: `twei friends {{username}}`
+  - follow 某人: `twei follow {{username}}`
   - 评论
   
     - 查看@你的评论: `twei comments.mentions`
     - 查看你发出评论: `twei comments.by_me`
     - 查看给你的评论: `twei comments.to_me`
-    - 查看某条微博的评论: `twei comments {{id}}`
-    - 评论微博: `twei comment {{id}} {{comment}}`
-    - 删除评论: `twei comment.remove {{id}}`
-    - 回复评论: `twei comment.reply {{id}} {{cid}} {{comment}}`
+    - 查看某条微博的评论: `twei comments {{sid}}`
+    - 评论微博: `twei comment {{sid}} {{comment}}`
+    - 删除评论: `twei comment.remove {{sid}}`
+    - 回复评论: `twei comment.reply {{sid}} {{cid}} {{comment}}`
   
   - 帮助
     
     - 查看 `execute` 的帮助内容: `twei help execute` or `twei execute -h`
-    - 查看 `remind` 的新浪 api 文档: `twei help remind`
+    - 查看新浪微博 api 文档:
+      
+      - `twei help remind`
+      - `twei help timeline`
+      - `twei help whois`
   
+## 自动补全
+  
+  twei 从 v0.2.3 版本后开始支持 base 和 zsh 的自动补全功能. 该功能默认未开启. 使用方法同 [npm][10] : `twei completion >> ~/.bashrc` or `twei completion >> ~/.zshrc`
   
     
 ## execute
@@ -119,3 +135,4 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
 [7]: https://github.com/justan/twei/blob/master/lib/user_alias/alias.example.js
 [8]: https://github.com/justan/twei/issues/new
 [9]: http://weibo.com/urmaker
+[10]: https://npmjs.org/doc/completion.html
