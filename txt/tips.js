@@ -19,4 +19,5 @@ module.exports = {
   , "api_not_support": "api %s 暂未支持."
   
   , "loading_sina_api_item": "正在打开 %s 在新浪 api 中的页面.."
+  , "auth": "正在打开 %s 获取 access_token"
 }
