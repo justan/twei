@@ -15,23 +15,43 @@ describe('Update status', function(){
       done();
     }, 4000);
   });
-  
-  it('simple text status', function(done){
-    var text = '#test# test';
-    t2w.updateWeibo({
-        accessToken: accessToken
-      , message: text
-    }).on('success', function(reply){
-      reply.should.be.a('object');
-      reply.should.not.have.property('error');
-      reply.should.have.property('text');
-      reply.text.should.eql(text);
-      
-      done();
-      destroy(reply.id);
-    }).on('error', function(err){
-      should.not.exist(err);
-      done();
+  describe('Update status', function(){
+    it('simple text status', function(done){
+      var text = '#test# test';
+      t2w.updateWeibo({
+          accessToken: accessToken
+        , message: text
+      }).on('success', function(reply){
+        reply.should.be.a('object');
+        reply.should.not.have.property('error');
+        reply.should.have.property('text');
+        reply.text.should.eql(text);
+        
+        done();
+        destroy(reply.id);
+      }).on('error', function(err){
+        should.not.exist(err);
+        done();
+      });
+    });
+    
+    it('包含有特殊字符的微博', function(done){
+      var text = '#test# ~!@#$%^&*()_+/{}|:"<>?\=\\';
+      t2w.updateWeibo({
+          accessToken: accessToken
+        , message: text
+      }).on('success', function(reply){
+        reply.should.be.a('object');
+        reply.should.not.have.property('error');
+        reply.should.have.property('text');
+        reply.text.should.eql(text);
+        
+        done();
+        destroy(reply.id);
+      }).on('error', function(err){
+        should.not.exist(err);
+        done();
+      });
     });
   });
   

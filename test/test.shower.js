@@ -14,7 +14,7 @@ describe("test shower(twei's theme)", function(){
     });
     
     it('assigned a shower', function(){
-      showers.use(existShower).should.have.property('color');
+      showers.use(existShower).should.have.property('_events');
     });
     
     it('a shower no exist', function(){
