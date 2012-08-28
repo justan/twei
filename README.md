@@ -13,6 +13,12 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   2. 在命令行中: `npm install -g twei`
   3. `twei --version`
   
+使用最新的开发版本: 
+
+  1. `git clone https://github.com/justan/twei.git`
+  2. `cd twei && npm link`
+  3. `twei --version`
+  
 ## 使用
 
 ```
@@ -51,6 +57,7 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
     微博 id: {{sid}}
     微博评论 id: {{cid}}
     评论内容: {{comment}}
+    微博内容: {{status}}
 ``` 
   
   - 查看提醒: `twei remind`
@@ -59,7 +66,8 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
     - 发微博: `twei update 雨一直下个不停`
     - 发带网络图片的微博: `twei update 雨一直下个不停 -i http://example/example.png`
     - 发带本地图片的微博: `twei update 雨一直下个不停 -i ./example.png`
-    - 转发微博: `twei repost {{sid}}` or `twei rt {{sid}}`
+    - 转发微博: `twei repost {{sid}} {{status}}`
+    - 转发并评论: `twei rt {{sid}} {{status}}`
     
   - timeline
   
@@ -93,7 +101,7 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   
 ## 自动补全
   
-  twei 从 v0.2.3 版本后开始支持 base 和 zsh 的自动补全功能. 该功能默认未开启. 使用方法同 [npm][10] : `twei completion >> ~/.bashrc` or `twei completion >> ~/.zshrc`
+  twei 从 v0.2.3 版本后开始支持 bash 和 zsh 的自动补全功能. 该功能默认未开启. 使用方法同 [npm][10] : `twei completion >> ~/.bashrc` or `twei completion >> ~/.zshrc`
   
     
 ## execute
