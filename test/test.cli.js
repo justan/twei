@@ -4,7 +4,8 @@ var cli = require('../lib/cli_core')
   ;
 
 describe("test twei's cli interface", function(){
-  var args = ["timeline", "count=5", "page=2", "-d"]
+  var cliStr = "timeline count=4 page=2 -d"
+    , args = cliStr.split(' ')
     , argsCopy = args.slice()
     , lastArgs = cli.restoreAlias(argsCopy.shift()).concat(argsCopy)
     ;
@@ -19,8 +20,20 @@ describe("test twei's cli interface", function(){
     it('check arguments parser of timeline', function(){
       var argMap = cli.argParser(lastArgs);
       argMap.cmd.name.should.equal(lastArgs[0]);
-      argMap.cmd.param[1].should.equal(args[1]);
+      argMap.cmd.param[2].should.equal(args[1]);//timeline alias 中自带了一个 count=5
       argMap.opts.should.have.property('-d');
+    });
+    
+    it('格式: `twei timeline --count 6 page=2`', function(){
+      var cliStr = "timeline --count 6 page=2"
+        , args = cliStr.split(' ')
+        , argsCopy = args.slice()
+        , lastArgs = cli.restoreAlias(argsCopy.shift()).concat(argsCopy)
+        , argMap = cli.argParser(lastArgs);
+        
+      argMap.cmd.name.should.equal(lastArgs[0]);
+      argMap.cmd.param[2].should.equal('count=6');
+      argMap.cmd.param[3].should.equal(args[3]);//page=2
     });
   });
   
