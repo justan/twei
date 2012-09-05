@@ -7,5 +7,3 @@
     - 细化帮助文档
   - 更改配置文件到 home 目录
   - 微博 code 认证方式的支持
-  - better pipe support
-    如: `twei remind --filter status | xargs twei timeline --count`

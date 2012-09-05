@@ -22,36 +22,6 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
 ## 使用
 
 ```
-
-  nodejs 命令行微博工具
-    
-  Usage: twei [command]
-    
-  Command:
-    支持的命令包括: 
-    authorize, execute, help, 
-    comment, follow, followers, unfollow, update, repost,
-    status, user, hot, remind
-
-  Example:
-    twei remind
-    twei timeline
-    twei update 雨一直下个不停
-    twei update "你好, 世界" -i ../example.png -c 114.169938,22.559385
-
-```
-
-## 测试
-
-  `npm test`
-  
-## access_token
-
-  由于新浪的 [api 限制][2], 目前的 access_token 只有数天的有效期. Access_token 过期后需要输入你[重新授权][6]后的新 access_token. 
-
-## 示例
-
-```
   符号说明: 
     微博用户名: {{username}}
     微博 id: {{sid}}
@@ -98,7 +68,28 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
       - `twei help remind`
       - `twei help timeline`
       - `twei help whois`
+      
+### 进阶使用
+
+  通过管道 twei 可以方便的借用 *nix 其他字符处理程序(诸如: grep xargs cut 等)的强大功能. 如: 
   
+  - 用 less 查看微博列表: `twei timeline --count 100 | less -R`
+  - 查看未读微博: `twei remind --filter status | xargs twei timeline --count`
+  - unfollow 你关注列表中没有 follow 你的人: 
+    `twei friends {{username}} --filter users.follow_me users.name | grep false |
+     cut -f 2 | xargs -i twei unfollow {}`
+    
+  如果你知道有意思的用法, 请告诉我 :)
+
+
+## 测试
+
+  `npm test`
+  
+## access_token
+
+  由于新浪的 [api 限制][2], 目前的 access_token 只有数天的有效期. Access_token 过期后需要输入你[重新授权][6]后的新 access_token. 
+
 ## 自动补全
   
   twei 从 v0.2.3 版本后开始支持 bash 和 zsh 的自动补全功能. 该功能默认未开启. 使用方法同 [npm][10] : `twei completion >> ~/.bashrc` or `twei completion >> ~/.zshrc`
@@ -116,7 +107,7 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   
   querystring 是 apistr 的请求参数. querystring 可以是普通的请求字符串格式(uid=1488292340), 如果该条 api 定义了expect, querysting 可以省去请求参数头部分(前例中的 "uid=" 部分). 完整的 querysting 请参考新浪微博的[接口][4]
   
-  Usage: `twei timeline.home count=2 page=2` or `twei timeline.home "count=2&page=2"`, 
+  Usage: `twei timeline.home count=2 page=2` or `twei timeline.home "count=2&page=2"` or `twei timeline --count 2 --page 2`, 
          `twei execute statuses.user sheepmaker count=5 page=2 feature=1` 
 
          
@@ -126,7 +117,7 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(
   
   - [command alias][7] 可以将常用命令改写成较短的命令. 
   - 默认的 twei 只提供了有限类型的数据. 通过 shower 则可以自定义内容的显示样式. 自定义的 shower 可以通过 `--shower` 指定使用.
-    Example: `twei timeline --shower base`
+    Example: `twei timeline --shower json`
 
 ## 联系
 
