@@ -32,7 +32,7 @@ describe("test twei's util", function(){
         ;
       t.push([1234567]);
       output = t.toString();
-      output.should.equal(t[0][0] + '\n')
+      output.should.equal(t[0][0])
     });
     
     it('多行单列', function(){
@@ -43,7 +43,7 @@ describe("test twei's util", function(){
       t.push([12345678]);
       t.push([123456789]);
       output = t.toString();
-      output.should.equal(t[0][0] + '\n' + t[1][0] + '\n' + t[2][0] + '\n')
+      output.should.equal(t[0][0] + '\n' + t[1][0] + '\n' + t[2][0])
     });
     
     describe('多行多列', function(){
@@ -56,7 +56,7 @@ describe("test twei's util", function(){
         output = t.toString();
         output.should.equal(
           t[0][0] + '\t' + t[0][1] + '\t' + t[0][2] + '\n' +
-          t[1][0] + '\t' + t[1][1] + '\t' + t[1][2] + '\n'
+          t[1][0] + '\t' + t[1][1] + '\t' + t[1][2]
         )
       });
       
@@ -73,7 +73,7 @@ describe("test twei's util", function(){
           t[0][0] + '\t\t\t\t' + t[0][1] + '\n' +
           t[1][0] + '\t\t\t' + t[1][1] + '\n' +
           t[2][0] + '\t\t' + t[2][1] + '\n' + 
-          t[3][0] + '\t' + t[3][1] + '\n'
+          t[3][0] + '\t' + t[3][1]
         )
       });
       
@@ -88,7 +88,7 @@ describe("test twei's util", function(){
         //console.log(output);
         output.should.equal(
           t[0][0] + '\t' + t[0][1] + '\t' + t[0][2] + '\n' +
-          t[1][0] + '\t\t' + t[1][1] + '\t\t' + t[1][2] + '\n'
+          t[1][0] + '\t\t' + t[1][1] + '\t\t' + t[1][2]
         );
       });
     });
