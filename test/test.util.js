@@ -2,6 +2,7 @@ var should = require('chai').should()
   , twei_util = require('../lib/util')
   , color = twei_util.color
   , Table = twei_util.Table
+  , argParser = twei_util.argParser
   ;
   
 describe("test twei's util", function(){
@@ -93,6 +94,30 @@ describe("test twei's util", function(){
       });
     });
     
+  });
+  
+  describe('命令行参数解析', function(){
+    var optMap = {
+        help: {
+          alias: ['h', '?']
+        , fn: function(){
+        
+        }
+      }
+      , version: {
+          fn: function(){
+            console.log('0.2.4')
+          }
+      }
+    };
+    
+    argParser.optionInit(optMap);
+    
+    it('options parse', function(){
+      var cliStr = '--version';
+      
+      argParser.getOptFn(cliStr).fn.should.equal(optMap.version.fn)
+    });
   });
   
 });
