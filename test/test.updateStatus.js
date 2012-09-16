@@ -2,9 +2,12 @@ var request = require('request')
   , fs = require('fs')
   , t2w = require('../')
   , should = require('chai').should()
+  
+  , confPath = process.env.HOME + '/.tweirc'
+  , config = new (require('../lib/config').Config)(confPath)
   ;
   
-var accessToken = fs.readFileSync(__dirname + '/../access_token', 'utf8').trim();
+var accessToken = config.get('tsina.access_token');
   
   
 describe('Update status', function(){
