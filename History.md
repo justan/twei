@@ -1,3 +1,11 @@
+# 0.2.5 / 2012-12-9
+  
+  - config 命令
+  - twei 微博相关函数 `cmdMap.execute` 现在返回一个 emiter
+  - 整理了程序退出状态码
+  - 将 access_token 移至用户目录保存
+  - mac os 测试
+
 # 0.2.4 / 2012-9-5
 
   - 新增选项:
