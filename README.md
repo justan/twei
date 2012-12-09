@@ -5,7 +5,7 @@ twei 是用 [node.js][0] 编写的微博命令行工具. 目前支持新浪微�
 
 ## 环境
 
-twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os(未测试), cygwin_ 等.
+twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os, cygwin_ 等.
 
 ## 安装
 
