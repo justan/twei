@@ -88,7 +88,16 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os,
   
 ## access_token
 
-  由于新浪的 [api 限制][2], 目前的 access_token 只有数天的有效期. Access_token 过期后需要输入你[重新授权][6]后的新 access_token. 
+  由于新浪的 [api 限制][2], 目前的 `access_token` 只有数天的有效期. `Access_token` 过期后需要输入你[重新授权][6]后的新 `access_token`. 
+  
+  `access_token`保存在`$HOME/.tweirc`:
+  
+  ```
+  [tsina]
+  2 access_token = 2.00V_123567abcdefg
+  ```
+  
+  
 
 ## 自动补全
   
