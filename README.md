@@ -88,7 +88,8 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os,
   
 ## access_token
 
-  由于新浪的 [api 限制][2], 目前的 `access_token` 只有数天的有效期. `Access_token` 过期后需要输入你[重新授权][6]后的新 `access_token`. 
+  由于新浪的 [api 限制][2], 目前的 `access_token` 只有数天的有效期. `Access_token` 过期后需要
+  输入你[重新授权][6]后的新 `access_token`. 
   
   `access_token`保存在`$HOME/.tweirc`:
   
@@ -96,6 +97,10 @@ twei 适用于所有可运行 node.js 的环境, 包括 _windows, linux, mac os,
   [tsina]
   2 access_token = 2.00V_123567abcdefg
   ```
+  
+  由`twei`发布的微博会显示`来自twei`，如果你希望将`twei`改成你在新浪微博申请的应用的名称，只需
+  用你的应用的`access_token`替换即可。你可以在[微博API测试后台](http://open.weibo.com/tools/console)
+  看到`access_token`。
   
   
 
